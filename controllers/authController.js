@@ -1,22 +1,37 @@
 // controller actions
-module.exports.signup_get = (req, res) => {
+exports.signup_get = (req, res) => {
   res.render('signup');
 }
 
-module.exports.login_get = (req, res) => {
+exports.login_get = (req, res) => {
   res.render('login');
 }
 
-module.exports.signup_post = async (req, res) => {
-  const { email, password } = req.body;
-
-  console.log(email, password);
-  res.send('new signup');
+exports.signup_post = async (req, res) => {
+ 
+  // res.send('new signup');
+  res.json(req.body);
 }
 
-module.exports.login_post = async (req, res) => {
-  const { email, password } = req.body;
+exports.login_post = async (req, res) => {
+  try {
+    // console.log(req);
 
-  console.log(email, password);
-  res.send('user login');
+  const  response = {  
+    name: req.body.name,  
+    email: req.body.email,
+    password: req.body.password
+  };  
+
+
+  res.json({name: req.body.name});
+  console.log(response);
+  } catch (err){
+    console.log(err);
+  }
+  
+  
+  
+  
+
 }
